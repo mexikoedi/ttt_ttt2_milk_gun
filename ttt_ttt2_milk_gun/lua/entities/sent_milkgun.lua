@@ -1,3 +1,4 @@
+if engine.ActiveGamemode( ) != "terrortown" then return end
 ENT.Type = "anim"
 ENT.PrintName = "Milk"
 ENT.Author = "mexikoedi"
