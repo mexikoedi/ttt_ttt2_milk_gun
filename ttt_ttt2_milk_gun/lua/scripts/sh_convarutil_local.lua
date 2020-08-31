@@ -1,3 +1,4 @@
+if engine.ActiveGamemode( ) != "terrortown" then return end
 local ConvarGroupClass = { }
 ConvarGroupClass.ListOfConvars = { }
 local ConvarClass = { }
