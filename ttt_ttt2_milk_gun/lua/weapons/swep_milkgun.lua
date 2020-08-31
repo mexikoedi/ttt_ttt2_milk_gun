@@ -1,4 +1,6 @@
+if engine.ActiveGamemode( ) != "terrortown" then return end
 if SERVER then
+    AddCSLuaFile( )
     resource.AddFile( "materials/vgui/ttt/weapon_milk_gun.vmt" )
     resource.AddFile( "sound/milk.wav" )
     resource.AddFile( "sound/milk_altfire.wav" )
