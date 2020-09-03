@@ -8,11 +8,11 @@ ConvarClass.UlxLabel = "Undefined" .. tostring( CurTime( ) ) .. tostring( math.r
 // Server
 function ConvarClass:InitULib( )
     if ( self.type == "bool" ) then
-        ULib.replicatedWritableCvar( self.name , 'rep_' .. self.name , GetConVar( self.name ):GetBool( ) , true , false , name )
+        ULib.replicatedWritableCvar( self.name , "rep_" .. self.name , GetConVar( self.name ):GetBool( ) , true , false , name )
     elseif ( self.type == "int" ) then
-        ULib.replicatedWritableCvar( self.name , 'rep_' .. self.name , GetConVar( self.name ):GetInt( ) , true , false , name )
+        ULib.replicatedWritableCvar( self.name , "rep_" .. self.name , GetConVar( self.name ):GetInt( ) , true , false , name )
     elseif ( self.type == "float" ) then
-        ULib.replicatedWritableCvar( self.name , 'rep_' .. self.name , GetConVar( self.name ):GetFloat( ) , true , false , name )
+        ULib.replicatedWritableCvar( self.name , "rep_" .. self.name , GetConVar( self.name ):GetFloat( ) , true , false , name )
     end
 end
 
@@ -20,14 +20,14 @@ end
 function ConvarClass:GiveUIElement( )
     if ( self.type == "bool" ) then
         return xlib.makecheckbox{
-            label = self.name .. ' (Def. ' .. self.default .. ')' ,
-            repconvar = 'rep_' .. self.name ,
+            label = self.name .. " (Def. " .. self.default .. ")" ,
+            repconvar = "rep_" .. self.name ,
             parent = tttrslst
         }
     elseif ( self.type == "int" || self.type == "float" ) then
         return xlib.makeslider{
-            label = self.name .. ' (Def. ' .. self.default .. ')' ,
-            repconvar = 'rep_' .. self.name ,
+            label = self.name .. " (Def. " .. self.default .. ")" ,
+            repconvar = "rep_" .. self.name ,
             min = self.min ,
             max = self.max ,
             decimal = self.decimal ,
@@ -45,7 +45,7 @@ end
 
 // Server
 function ConvarGroupClass:InitCustomVars( )
-    hook.Add( 'TTTUlxInitCustomCVar' , 'TTT' .. self.HookLabel .. 'InitRWCVar' , function( name )
+    hook.Add( "TTTUlxInitCustomCVar" , "TTT" .. self.HookLabel .. "InitRWCVar" , function( name )
         for i , cvar in ipairs( self.ListOfConvars ) do
             cvar:InitULib( )
         end
@@ -55,7 +55,7 @@ end
 // Client
 function ConvarGroupClass:SetupULib( )
     if CLIENT then
-        hook.Add( 'TTTUlxModifyAddonSettings' , 'TTT' .. self.HookLabel .. 'ModifySettings' , function( name )
+        hook.Add( "TTTUlxModifyAddonSettings" , "TTT" .. self.HookLabel .. "ModifySettings" , function( name )
             local tttrspnl = xlib.makelistlayout{
                 w = 415 ,
                 h = 318 ,
@@ -71,11 +71,11 @@ function ConvarGroupClass:SetupULib( )
                 if !cvar.ttt2 then
                     if firstEncounter then
                         firstEncounter = false
-                        local tttrsclp = vgui.Create( 'DCollapsibleCategory' , tttrspnl )
+                        local tttrsclp = vgui.Create( "DCollapsibleCategory" , tttrspnl )
                         tttrsclp:SetSize( 390 , 300 )
                         tttrsclp:SetExpanded( 1 )
-                        tttrsclp:SetLabel( 'Settings' )
-                        tttrslst = vgui.Create( 'DPanelList' , tttrsclp )
+                        tttrsclp:SetLabel( "Settings" )
+                        tttrslst = vgui.Create( "DPanelList" , tttrsclp )
                         tttrslst:SetPos( 5 , 25 )
                         tttrslst:SetSpacing( 5 )
                     end
@@ -98,11 +98,11 @@ function ConvarGroupClass:SetupULib( )
                 if cvar.ttt2 then
                     if firstEncounter then
                         firstEncounter = false
-                        tttrsclp2 = vgui.Create( 'DCollapsibleCategory' , tttrspnl )
+                        tttrsclp2 = vgui.Create( "DCollapsibleCategory" , tttrspnl )
                         tttrsclp2:SetSize( 390 , 300 )
                         tttrsclp2:SetExpanded( 1 )
-                        tttrsclp2:SetLabel( 'TTT2 Settings (TTT2 required)' )
-                        tttrslst2 = vgui.Create( 'DPanelList' , tttrsclp2 )
+                        tttrsclp2:SetLabel( "TTT2 Settings (TTT2 required)" )
+                        tttrslst2 = vgui.Create( "DPanelList" , tttrsclp2 )
                         tttrslst2:SetPos( 5 , 25 )
                         tttrslst2:SetSpacing( 5 )
                     end
@@ -116,7 +116,7 @@ function ConvarGroupClass:SetupULib( )
                 tttrslst2:SetSize( 390 , i * 25 )
             end
 
-            xgui.hookEvent( 'onProcessModules' , nil , tttrspnl.processModules )
+            xgui.hookEvent( "onProcessModules" , nil , tttrspnl.processModules )
             xgui.addSubModule( self.UlxLabel , tttrspnl , nil , name )
         end )
     end
