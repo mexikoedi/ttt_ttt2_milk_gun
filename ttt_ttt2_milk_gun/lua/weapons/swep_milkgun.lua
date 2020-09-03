@@ -1,4 +1,5 @@
 if engine.ActiveGamemode( ) != "terrortown" then return end
+
 if SERVER then
     AddCSLuaFile( )
     resource.AddFile( "materials/vgui/ttt/weapon_milk_gun.vmt" )
@@ -8,10 +9,6 @@ end
 
 SWEP.PrintName = "Milk Gun"
 SWEP.Author = "mexikoedi"
-SWEP.Instructions = "Give the milk"
-SWEP.Category = "TTT"
-SWEP.Spawnable = true
-SWEP.AdminOnly = false
 SWEP.Icon = "vgui/ttt/weapon_milk_gun"
 SWEP.Base = "weapon_tttbase"
 SWEP.Kind = WEAPON_EQUIP1
@@ -38,7 +35,7 @@ SWEP.Primary.RPS = GetConVar( "ttt_milkgun_rps" ):GetFloat( )
 SWEP.Primary.Ammo = "none"
 SWEP.Weight = 7
 SWEP.DrawAmmo = true
-SWEP.DrawCrosshair = false
+SWEP.DrawCrosshair = true
 SWEP.ViewModel = "models/weapons/v_pist_fiveseven.mdl"
 SWEP.WorldModel = "models/weapons/w_pist_fiveseven.mdl"
 local ShootSound = Sound( "milk.wav" )
