@@ -23,7 +23,7 @@ local cg = ConvarGroup( "Milkgun" , "Milk Gun" )
 
 Convar( cg , false , "ttt_milkgun_automaticFire" , 0 , { FCVAR_ARCHIVE , FCVAR_NOTIFY , FCVAR_REPLICATED } , "Enable automatic fire" , "bool" )
 
-Convar( cg , false , "ttt_milkgun_damage" , 100 , { FCVAR_ARCHIVE , FCVAR_NOTIFY , FCVAR_REPLICATED } , "Damage dealt on impact" , "int" , 1 , 500 )
+Convar( cg , false , "ttt_milkgun_damage" , 150 , { FCVAR_ARCHIVE , FCVAR_NOTIFY , FCVAR_REPLICATED } , "Damage dealt on impact" , "int" , 1 , 500 )
 
 Convar( cg , false , "ttt_milkgun_randomDamage" , 5 , { FCVAR_ARCHIVE , FCVAR_NOTIFY , FCVAR_REPLICATED } , "Applied on top of the normal damage (+/-)" , "int" , 1 , 200 )
 
