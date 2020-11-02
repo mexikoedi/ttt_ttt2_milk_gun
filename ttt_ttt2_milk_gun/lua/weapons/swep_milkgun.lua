@@ -19,7 +19,7 @@ SWEP.InLoadoutFor = nil
 SWEP.LimitedStock = true
 
 SWEP.EquipMenuData = {
-    type = "Weapon" ,
+    type = "item_weapon" ,
     desc = "You have too much milk."
 }
 
