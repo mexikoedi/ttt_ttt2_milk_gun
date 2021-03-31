@@ -20,6 +20,7 @@ SWEP.LimitedStock = true
 
 SWEP.EquipMenuData = {
     type = "item_weapon",
+    name = "Milk Gun",
     desc = "You have too much milk."
 }
 
