@@ -29,4 +29,3 @@ jobs:
 
     - name: Check code with glualint
       run: ./glualint .
-      continue-on-error: true
