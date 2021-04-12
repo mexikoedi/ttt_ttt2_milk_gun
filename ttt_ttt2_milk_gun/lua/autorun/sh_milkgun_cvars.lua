@@ -1,6 +1,10 @@
 if engine.ActiveGamemode() ~= "terrortown" then return end
 
 -- convars added with default values
+CreateConVar("ttt_milkgun_primary_sound", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the primary attack")
+
+CreateConVar("ttt_milkgun_secondary_sound", "1", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Sound of the secondary attack")
+
 CreateConVar("ttt_milkgun_automaticFire", "0", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Enable automatic fire")
 
 CreateConVar("ttt_milkgun_damage", "150", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Damage dealt on impact")
@@ -22,6 +26,8 @@ if CLIENT then
 end
 
 hook.Add("TTTUlxInitCustomCVar", "TTTMilkGunInitRWCVar", function(name)
+    ULib.replicatedWritableCvar("ttt_milkgun_primary_sound", "rep_ttt_milkgun_primary_sound", GetConVar("ttt_milkgun_primary_sound"):GetBool(), true, false, name)
+    ULib.replicatedWritableCvar("ttt_milkgun_secondary_sound", "rep_ttt_milkgun_secondary_sound", GetConVar("ttt_milkgun_secondary_sound"):GetBool(), true, false, name)
     ULib.replicatedWritableCvar("ttt_milkgun_automaticFire", "rep_ttt_milkgun_automaticFire", GetConVar("ttt_milkgun_automaticFire"):GetBool(), true, false, name)
     ULib.replicatedWritableCvar("ttt_milkgun_damage", "rep_ttt_milkgun_damage", GetConVar("ttt_milkgun_damage"):GetInt(), true, false, name)
     ULib.replicatedWritableCvar("ttt_milkgun_randomDamage", "rep_ttt_milkgun_randomDamage", GetConVar("ttt_milkgun_randomDamage"):GetInt(), true, false, name)
@@ -40,13 +46,25 @@ if CLIENT then
 
         -- Basic Settings
         local tttrsclp1 = vgui.Create("DCollapsibleCategory", tttrspnl)
-        tttrsclp1:SetSize(390, 144)
+        tttrsclp1:SetSize(390, 180)
         tttrsclp1:SetExpanded(1)
         tttrsclp1:SetLabel("Basic Settings")
         local tttrslst1 = vgui.Create("DPanelList", tttrsclp1)
         tttrslst1:SetPos(5, 25)
-        tttrslst1:SetSize(390, 144)
+        tttrslst1:SetSize(390, 180)
         tttrslst1:SetSpacing(5)
+
+        tttrslst1:AddItem(xlib.makecheckbox{
+            label = "ttt_milkgun_primary_sound (Def. 1)",
+            repconvar = "rep_ttt_milkgun_primary_sound",
+            parent = tttrslst1
+        })
+
+        tttrslst1:AddItem(xlib.makecheckbox{
+            label = "ttt_milkgun_secondary_sound (Def. 1)",
+            repconvar = "rep_ttt_milkgun_secondary_sound",
+            parent = tttrslst1
+        })
 
         tttrslst1:AddItem(xlib.makecheckbox{
             label = "ttt_milkgun_automaticFire (Def. 0)",
