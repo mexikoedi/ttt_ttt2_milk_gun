@@ -61,7 +61,7 @@ if SERVER then
             self.currentOwner:EmitSound(ShootSound)
         end
 
-        local ent = ents.Create("sent_milkgun")
+        local ent = ents.Create("ent_ttt_ttt2_milk_gun")
         if (not IsValid(ent)) then return end
         ent:SetModel("models/props_junk/garbage_milkcarton002a.mdl")
         ent:SetAngles(self.currentOwner:EyeAngles())
