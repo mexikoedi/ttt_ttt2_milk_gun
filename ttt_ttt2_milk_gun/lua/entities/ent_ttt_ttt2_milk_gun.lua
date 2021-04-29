@@ -43,7 +43,7 @@ if SERVER then
                     dmg:SetAttacker(self:GetOwner())
                 end
 
-                local inflictor = ents.Create("swep_milkgun")
+                local inflictor = ents.Create("weapon_ttt_ttt2_milk_gun")
                 dmg:SetInflictor(inflictor)
                 local r = GetConVar("ttt_milkgun_randomDamage"):GetFloat()
                 local rand = math.random(-r, r)
