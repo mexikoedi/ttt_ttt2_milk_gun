@@ -10,7 +10,7 @@ end
 SWEP.PrintName = "Milk Gun"
 SWEP.Author = "mexikoedi"
 SWEP.Contact = "Steam"
-SWEP.Instructions = "YYou can shoot with primary attack and make a sound with secondary attack."
+SWEP.Instructions = "You can shoot with primary attack and make a sound with secondary attack."
 SWEP.Purpose = "Give milk bags to everyone."
 SWEP.Spawnable = false
 SWEP.AdminOnly = false
