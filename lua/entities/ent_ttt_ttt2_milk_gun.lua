@@ -1,10 +1,14 @@
 if engine.ActiveGamemode() ~= "terrortown" then return end
+ENT.Base = "base_anim"
 ENT.Type = "anim"
 ENT.PrintName = "Milk"
 ENT.Author = "mexikoedi"
-ENT.Contact = ""
-ENT.Purpose = ""
-ENT.Instructions = ""
+ENT.Contact = "Steam"
+ENT.Instructions = "Is only used for the milk gun."
+ENT.Purpose = "Milk entity for the milk gun."
+ENT.Spawnable = false
+ENT.AdminSpawnable = false
+ENT.AdminOnly = false
 ENT.AlreadyHit = {}
 ENT.Collided = 0
 local CollisionsBeforeRemove = 20
@@ -20,7 +24,7 @@ if SERVER then
         self:SetSolid(SOLID_VPHYSICS)
         local phys = self:GetPhysicsObject()
 
-        if (phys:IsValid()) then
+        if phys:IsValid() then
             phys:Wake()
             phys:SetMass(5)
         end

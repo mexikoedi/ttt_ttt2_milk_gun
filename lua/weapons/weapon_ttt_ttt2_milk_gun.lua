@@ -9,6 +9,11 @@ end
 
 SWEP.PrintName = "Milk Gun"
 SWEP.Author = "mexikoedi"
+SWEP.Contact = "Steam"
+SWEP.Instructions = "YYou can shoot with primary attack and make a sound with secondary attack."
+SWEP.Purpose = "Give milk bags to everyone."
+SWEP.Spawnable = false
+SWEP.AdminOnly = false
 SWEP.Icon = "vgui/ttt/weapon_milk_gun"
 SWEP.Base = "weapon_tttbase"
 SWEP.Kind = WEAPON_EQUIP1
@@ -21,7 +26,7 @@ SWEP.LimitedStock = true
 SWEP.EquipMenuData = {
     type = "item_weapon",
     name = "Milk Gun",
-    desc = "You have too much milk."
+    desc = "Shoot and play a sound with primary attack. Use secondary attack to hear a different sound."
 }
 
 SWEP.AllowDrop = true
