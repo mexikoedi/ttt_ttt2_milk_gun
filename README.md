@@ -1,6 +1,6 @@
-# TTT_TTT2_Milk_Gun
+# ttt_ttt2_milk_gun
 
-TTT_TTT2_Milk_Gun Addon for Garry's Mod.
+ttt_ttt2_milk_gun addon for Garry's Mod.
 
 More information are available here: 
 https://steamcommunity.com/sharedfiles/filedetails/?id=1902634289

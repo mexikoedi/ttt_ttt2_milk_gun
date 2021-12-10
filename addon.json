@@ -1,8 +1,11 @@
 {
-    "title": "TTT/TTT2 Milk Gun",
+    "title": "[TTT|2] Milk Gun [WEAPON]",
     "type": "weapon",
-    "tags": "fun",
-    "description": "You have too much milk.",
+    "tags": [
+        "realism",
+        "fun"
+    ],
+    "description": "Shoot and play a sound with primary attack. Use secondary attack to hear a different sound.",
     "ignore": [
         "*.psd",
         "*.vcproj",
