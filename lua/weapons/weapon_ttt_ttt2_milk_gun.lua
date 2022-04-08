@@ -67,10 +67,10 @@ if SERVER then
         end
 
         local ent = ents.Create("ent_ttt_ttt2_milk_gun")
-        if (not IsValid(ent)) then return end
+        if not IsValid(ent) then return end
         ent:SetModel("models/props_junk/garbage_milkcarton002a.mdl")
         ent:SetAngles(self.currentOwner:EyeAngles())
-        ent:SetPos(self.currentOwner:EyePos() + (self.currentOwner:GetAimVector() * 16))
+        ent:SetPos(self.currentOwner:EyePos() + self.currentOwner:GetAimVector() * 16)
         ent.Owner = self.currentOwner
         ent:SetOwner(self.currentOwner) -- Prevents all normal phys damage to all entities for whatever reason, but we actually want this to be the case
         ent:SetPhysicsAttacker(self.currentOwner)
@@ -80,7 +80,7 @@ if SERVER then
         util.SpriteTrail(ent, 0, Color(255, 255, 255), false, 16, 1, 6, 1 / (15 + 1) * 0.5, "trails/laser.vmt")
         local phys = ent:GetPhysicsObject()
 
-        if (not IsValid(phys)) then
+        if not IsValid(phys) then
             ent:Remove()
 
             return
