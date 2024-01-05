@@ -13,17 +13,14 @@ ENT.AlreadyHit = {}
 ENT.Collided = 0
 local CollisionsBeforeRemove = 20
 local MinSpeed = 700
-
 if SERVER then
     AddCSLuaFile()
-
     function ENT:Initialize()
         self:SetModel("models/props_junk/garbage_milkcarton002a.mdl")
         self:PhysicsInit(SOLID_VPHYSICS)
         self:SetMoveType(MOVETYPE_VPHYSICS)
         self:SetSolid(SOLID_VPHYSICS)
         local phys = self:GetPhysicsObject()
-
         if phys:IsValid() then
             phys:Wake()
             phys:SetMass(5)
@@ -35,18 +32,12 @@ if SERVER then
 
     function ENT:PhysicsCollide(data, phys)
         self.Collided = self.Collided + 1
-
         if self.Collided <= CollisionsBeforeRemove then
             local Ent = data.HitEntity
             if not IsValid(self) or not IsValid(Ent) or not Ent:IsPlayer() then return end
-
             if not self.AlreadyHit[Ent:GetName()] and self:GetVelocity():LengthSqr() > MinSpeed * MinSpeed then
                 local dmg = DamageInfo()
-
-                if IsValid(self:GetOwner()) then
-                    dmg:SetAttacker(self:GetOwner())
-                end
-
+                if IsValid(self:GetOwner()) then dmg:SetAttacker(self:GetOwner()) end
                 local inflictor = ents.Create("weapon_ttt_ttt2_milk_gun")
                 dmg:SetInflictor(inflictor)
                 local r = GetConVar("ttt_milkgun_randomDamage"):GetFloat()
@@ -63,11 +54,7 @@ if SERVER then
                 self.AlreadyHit[Ent:GetName()] = true
             end
         else
-            timer.Simple(0, function()
-                if IsValid(self) then
-                    self:Remove()
-                end
-            end)
+            timer.Simple(0, function() if IsValid(self) then self:Remove() end end)
         end
     end
 end

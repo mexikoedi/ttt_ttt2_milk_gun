@@ -1,5 +1,4 @@
 if engine.ActiveGamemode() ~= "terrortown" then return end
-
 if SERVER then
     AddCSLuaFile()
     resource.AddFile("materials/vgui/ttt/weapon_milk_gun.vmt")
@@ -17,12 +16,9 @@ SWEP.AdminOnly = false
 SWEP.Icon = "vgui/ttt/weapon_milk_gun"
 SWEP.Base = "weapon_tttbase"
 SWEP.Kind = WEAPON_EQUIP1
-
 SWEP.CanBuy = {ROLE_TRAITOR}
-
 SWEP.InLoadoutFor = nil
 SWEP.LimitedStock = true
-
 SWEP.EquipMenuData = {
     type = "item_weapon",
     name = "Milk Gun",
@@ -46,7 +42,6 @@ SWEP.ViewModel = "models/weapons/v_pist_fiveseven.mdl"
 SWEP.WorldModel = "models/weapons/w_pist_fiveseven.mdl"
 local ShootSound = Sound("milk.wav")
 local SecondSound = Sound("milk_altfire.wav")
-
 function SWEP:Initialize()
     if CLIENT then return end
     self.Primary.ClipSize = GetConVar("ttt_milkgun_clipSize"):GetInt()
@@ -61,11 +56,7 @@ if SERVER then
         self:SetNextPrimaryFire(CurTime() + 1 / self.Primary.RPS)
         if not self:CanPrimaryAttack() then return end
         self:TakePrimaryAmmo(1)
-
-        if GetConVar("ttt_milkgun_primary_sound"):GetBool() then
-            self.currentOwner:EmitSound(ShootSound)
-        end
-
+        if GetConVar("ttt_milkgun_primary_sound"):GetBool() then self.currentOwner:EmitSound(ShootSound) end
         local ent = ents.Create("ent_ttt_ttt2_milk_gun")
         if not IsValid(ent) then return end
         ent:SetModel("models/props_junk/garbage_milkcarton002a.mdl")
@@ -79,10 +70,8 @@ if SERVER then
         ent:Activate()
         util.SpriteTrail(ent, 0, Color(255, 255, 255), false, 16, 1, 6, 1 / (15 + 1) * 0.5, "trails/laser.vmt")
         local phys = ent:GetPhysicsObject()
-
         if not IsValid(phys) then
             ent:Remove()
-
             return
         end
 
@@ -95,29 +84,19 @@ if SERVER then
     function SWEP:SecondaryAttack()
         self.currentOwner = self:GetOwner()
         self:SetNextSecondaryFire(CurTime() + 5)
-
-        if GetConVar("ttt_milkgun_secondary_sound"):GetBool() then
-            self.currentOwner:EmitSound(SecondSound)
-        end
+        if GetConVar("ttt_milkgun_secondary_sound"):GetBool() then self.currentOwner:EmitSound(SecondSound) end
     end
 
     function SWEP:Holster()
-        if IsValid(self.currentOwner) then
-            self.currentOwner:StopSound("milk_altfire.wav")
-        end
-
+        if IsValid(self.currentOwner) then self.currentOwner:StopSound("milk_altfire.wav") end
         return true
     end
 
     function SWEP:OnRemove()
-        if IsValid(self.currentOwner) then
-            self.currentOwner:StopSound("milk_altfire.wav")
-        end
+        if IsValid(self.currentOwner) then self.currentOwner:StopSound("milk_altfire.wav") end
     end
 
     function SWEP:OnDrop()
-        if IsValid(self.currentOwner) then
-            self.currentOwner:StopSound("milk_altfire.wav")
-        end
+        if IsValid(self.currentOwner) then self.currentOwner:StopSound("milk_altfire.wav") end
     end
 end
