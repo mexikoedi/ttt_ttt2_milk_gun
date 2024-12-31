@@ -30,7 +30,7 @@ if SERVER then
         self:SetUseType(SIMPLE_USE)
     end
 
-    function ENT:PhysicsCollide(data, phys)
+    function ENT:PhysicsCollide(data)
         self.Collided = self.Collided + 1
         if self.Collided <= CollisionsBeforeRemove then
             local Ent = data.HitEntity
