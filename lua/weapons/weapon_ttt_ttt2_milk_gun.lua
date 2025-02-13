@@ -58,13 +58,18 @@ if SERVER then
         if not self:CanPrimaryAttack() then return end
         self:TakePrimaryAmmo(1)
         if GetConVar("ttt_milkgun_primary_sound"):GetBool() then self.currentOwner:EmitSound(ShootSound) end
+        self.currentOwner:LagCompensation(true)
         local ent = ents.Create("ent_ttt_ttt2_milk_gun")
-        if not IsValid(ent) then return end
+        if not IsValid(ent) then
+            self.currentOwner:LagCompensation(false)
+            return
+        end
+
         ent:SetModel("models/props_junk/garbage_milkcarton002a.mdl")
         ent:SetAngles(self.currentOwner:EyeAngles())
         ent:SetPos(self.currentOwner:EyePos() + self.currentOwner:GetAimVector() * 16)
         ent.Owner = self.currentOwner
-        ent:SetOwner(self.currentOwner) -- Prevents all normal phys damage to all entities for whatever reason, but we actually want this to be the case
+        ent:SetOwner(self.currentOwner)
         ent:SetPhysicsAttacker(self.currentOwner)
         ent.fingerprints = self.fingerprints
         ent:Spawn()
@@ -73,6 +78,7 @@ if SERVER then
         local phys = ent:GetPhysicsObject()
         if not IsValid(phys) then
             ent:Remove()
+            self.currentOwner:LagCompensation(false)
             return
         end
 
@@ -80,6 +86,7 @@ if SERVER then
         phys:SetVelocity(self.currentOwner:GetAimVector() * 100000)
         local anglo = Angle(-10, -5, 0)
         self.currentOwner:ViewPunch(anglo)
+        self.currentOwner:LagCompensation(false)
     end
 
     function SWEP:SecondaryAttack()
