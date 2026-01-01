@@ -2,7 +2,7 @@
 
 [TTT|2] Milk Gun [WEAPON] addon for Garry's Mod.
 
-More information are available here: 
+More information is available here: 
 https://steamcommunity.com/sharedfiles/filedetails/?id=1902634289
 
 Feel free to contribute to this project. <br>
