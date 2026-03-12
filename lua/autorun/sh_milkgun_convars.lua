@@ -7,7 +7,7 @@ CreateConVar("ttt_milkgun_damage", "150", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVA
 CreateConVar("ttt_milkgun_randomDamage", "5", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Applied on top of the normal damage (+/-)")
 CreateConVar("ttt_milkgun_ammo", "3", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Default ammo the milkgun has when bought")
 CreateConVar("ttt_milkgun_clipSize", "3", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Clipsize of the milkgun")
-CreateConVar("ttt_milkgun_rps", "0.4", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Packages of milk to shoot per second")
+CreateConVar("ttt_milkgun_rps", "1.0", {FCVAR_REPLICATED, FCVAR_ARCHIVE, FCVAR_NOTIFY}, "Packages of milk to shoot per second")
 hook.Add("TTTUlxInitCustomCVar", "TTTMilkGunInitRWCVar", function(name)
     ULib.replicatedWritableCvar("ttt_milkgun_primary_sound", "rep_ttt_milkgun_primary_sound", GetConVar("ttt_milkgun_primary_sound"):GetBool(), true, false, name)
     ULib.replicatedWritableCvar("ttt_milkgun_secondary_sound", "rep_ttt_milkgun_secondary_sound", GetConVar("ttt_milkgun_secondary_sound"):GetBool(), true, false, name)
@@ -94,7 +94,7 @@ if CLIENT then
         })
 
         tttrslst1:AddItem(xlib.makeslider{
-            label = "ttt_milkgun_rps (Def. 0.4)",
+            label = "ttt_milkgun_rps (Def. 1.0)",
             repconvar = "rep_ttt_milkgun_rps",
             min = 0,
             max = 10,
